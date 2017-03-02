@@ -6,8 +6,9 @@ def wsgi_application(environ, start_response):
     body = []
     for key, value in query.items():
         for item in value:
-            body.append(str(key) + "=" + str(item) + "\n")
+            text = str(key) + "=" + str(item) + "\n"
+            body.append(text)
     status = '200 OK'     
     headers = [('Content-Type', 'text/plain')]
     start_response(status, headers )     
-    return [ body ] 
+    return  body  
