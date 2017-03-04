@@ -11,11 +11,18 @@ Class-based views
     2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
 Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
-    2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
+    2. Add a URL to urlpatterns:
+  url(r'^blog/', include('blog.urls'))
 """
+import os.path
+import sys
 from django.conf.urls import url
 from django.contrib import admin
-from . import qa 
+BASE_MODULE_DIR = os.path.dirname(__file__)
+BASE_MODULE_DIR = os.path.dirname(BASE_MODULE_DIR)
+sys.path.insert(0,BASE_MODULE_DIR)
+from qa import views
+ 
 urlpatterns = [
     url(r'^signup/', views.test),
     url(r'^admin/', admin.site.urls)
