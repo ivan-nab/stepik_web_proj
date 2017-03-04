@@ -1,0 +1,2 @@
+
+ALLOWED_HOSTS.append('167.16.84.55')
