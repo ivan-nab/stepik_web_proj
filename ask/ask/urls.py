@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-
+from .qa import views 
 urlpatterns = [
+    url(r'^signup/', views.test)
     url(r'^admin/', admin.site.urls),
 ]
