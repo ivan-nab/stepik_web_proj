@@ -76,8 +76,8 @@ WSGI_APPLICATION = 'ask.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':   'askdb',
-        'USER':   'qa',
+        'NAME': 'askdb',
+        'USER': 'qa',
         'PASSWORD': 'qapass',
     }
     ''' 
