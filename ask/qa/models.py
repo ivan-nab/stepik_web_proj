@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-
+import views
 from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
@@ -19,6 +19,9 @@ class Question(models.Model):
     likes = models.ManyToManyField(User,related_name='question_like_user')
     objects = QuestionManager()
 
+    def get_url(self):
+        reverse(views.main_questions)
+        
 
 class Answer(models.Model):
     text = models.TextField()

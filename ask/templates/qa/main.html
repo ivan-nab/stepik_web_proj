@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}
+        {{ block.super }}
+{% endblock  %}
+{% block content %}
+    <div class="questions">
+    {% for question in questions %}
+        <div class="question">
+            <h3><a href="{{ question.get_url }}"> {{ question.title }} </a></h3>
+            <div class="question-text">{{ question.text }}</div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
