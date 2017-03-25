@@ -10,7 +10,7 @@ def test(request, *args, **kwargs):
     return HttpResponse('OK',status=200)
 
 def main_questions(request, *args, **kwargs):
-    questions = Question.objects.all()
+    questions = Question.objects.new()
     return render(request, 'qa/main.html', {
         'questions': questions
     })

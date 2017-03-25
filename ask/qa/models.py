@@ -7,9 +7,9 @@ from django.contrib.auth.models import User
 
 class QuestionManager(models.Manager):
     def new():
-        pass
+        return self.order_by('-added_at')
     def popular():
-        pass 
+        return self.order_bt('-rating') 
 
 class Question(models.Model):
     title = models.CharField(max_length=255)
