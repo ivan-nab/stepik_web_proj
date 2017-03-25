@@ -1,0 +1,29 @@
+{% extends "qa/base.html" %}
+{% block title %}
+        {{ block.super }}
+{% endblock  %}
+{% block content %}
+<div class="jumbotron">
+    <div class="well">
+  	  	<h3>{{ question.title }}</h3>      
+  		<p>{{ question.text }}</p>
+  	</div>
+    {% for answer in question.answers.all %}     
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-primary">Мне нравится</button>
+                    </div>
+                    <div class="col-sm-6">{{{ answer.text }}}</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8"></div>
+                <div class="col-sm-1">Добавлено: {{answer.added_at}}</div>
+                <div class="col-sm-1">Добавил: {{answer.author.username}}</div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

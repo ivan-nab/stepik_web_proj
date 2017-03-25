@@ -13,7 +13,18 @@
     <div class="container">
         <div class="page-header">
             <h1>Вопросник</h1>
-        </div> 
+        </div>
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">Вопросник</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/">Новые</a></li>
+              <li><a href="/popular/">Популярные</a></li>
+            </ul>
+          </div>
+        </nav> 
     {% block content %}{% endblock %}
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

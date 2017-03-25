@@ -2,7 +2,7 @@
 # Create your views here.
 from django.http import HttpResponse 
 from django.http import Http404 
-from django.shortcuts import render 
+from django.shortcuts import render, get_object_or_404 
 from django.core.paginator import Paginator, EmptyPage
 from django.core.urlresolvers import reverse
 from models import Question
@@ -40,4 +40,11 @@ def popular_questions(request, *args, **kwargs):
     questions = paginate(request,questions)
     return render(request, 'qa/main.html',{
         'questions': questions
+    })
+
+def question_answers(request,*args,**kwargs):
+    question_id = args[0] 
+    question = get_object_or_404(Question,pk=question_id)
+    return render(request, 'qa/question.html',{
+        'question': question
     })
