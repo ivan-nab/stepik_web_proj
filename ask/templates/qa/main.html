@@ -14,7 +14,7 @@
                 {% if questions.has_previous %}
                     <li><a href="?page={{ questions.previous_page_number }}"><<</a></li>
                 {% endif %}
-                {% for pg in question.paginator.page_range %}
+                {% for pg in questions.paginator.page_range %}
                     {% if questions.number == pg %}
                     <li class="active"><a href="?page={{ pg }}">{{ pg }}</a></li>
                     {% else %}
