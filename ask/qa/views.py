@@ -12,13 +12,13 @@ def test(request, *args, **kwargs):
 
 def paginate(request, objects):
     try:
-        limit = int(request.GET('limit',10))
+        limit = int(request.GET.get('limit',10))
     except ValueError:
         limit = 10
     if limit > 100 or limit < 0:
         limit = 10
     try:
-        page = int(request.GET('page',1))
+        page = int(request.GET.get('page',1))
     except ValueError:
         raise Http404
     paginator = Paginator(objects,limit)
