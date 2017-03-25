@@ -34,3 +34,10 @@ def main_questions(request, *args, **kwargs):
     return render(request, 'qa/main.html', {
         'questions': questions
     })
+
+def popular_questions(request, *args, **kwargs):
+    questions = Question.objects.popular()
+    questions = paginate(request,questions)
+    return render(request, 'qa/main.html',{
+        'questions': questions
+    })
