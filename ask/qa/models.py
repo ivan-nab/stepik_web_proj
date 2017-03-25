@@ -21,7 +21,8 @@ class Question(models.Model):
     objects = QuestionManager()
 
     def get_url(self):
-        reverse("main_questions")
+        base_url = reverse("main_questions")
+        return '/'.join((base_url,self.id))
         
 
 class Answer(models.Model):
