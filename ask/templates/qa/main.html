@@ -5,10 +5,13 @@
 {% block content %}
     <div class="questions">
     {% for question in questions %}
+    <div class="panel panel-default">
+    <div class="panel-body">
         <div class="question">
             <h3><a href="{{ question.get_url }}"> {{ question.title }} </a></h3>
             <div class="question-text">{{ question.text }}</div>
         </div>
+    </div>
     {% endfor %}
             <ul class="pagination">
                 {% if questions.has_previous %}
