@@ -21,7 +21,7 @@ class Question(models.Model):
     objects = QuestionManager()
 
     def get_url(self):
-        reverse("qa:main_questions")
+        reverse("main_questions")
         
 
 class Answer(models.Model):
