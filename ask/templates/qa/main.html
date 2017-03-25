@@ -10,19 +10,21 @@
             <div class="question-text">{{ question.text }}</div>
         </div>
     {% endfor %}
-        <div class="pagination">
-            <span class="step-links">
+            <ul class="pagination">
                 {% if questions.has_previous %}
-                    <a href="?page={{ questions.previous_page_number }}">previous</a>
+                    <li><a href="?page={{ questions.previous_page_number }}"><<</a></li>
                 {% endif %}
-
-                <span class="current">
-                    Page {{ questions.number }} of {{ questions.paginator.num_pages }}.
-                </span>
-
+                {% for pg in question.paginator.page_range%}
+                    {% if questions.number == pg %}
+                    <li class="active"><a href="?page={{ pg }}">{{ pg }}</a></li>
+                    {% else %}
+                    <li><a href="?page={{ pg }}">{{ pg }}</a></li>
+                    {% endif %}
+                {% endfor %}
+ 
                 {% if questions.has_next %}
-                    <a href="?page={{ questions.next_page_number }}">next</a>
+                    <li><a href="?page={{ questions.next_page_number }}">>></a></li>
                 {% endif %}
-            </span>
-        </div>
+            </ul>
+
 {% endblock %}
