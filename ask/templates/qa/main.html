@@ -10,11 +10,19 @@
             <div class="question-text">{{ question.text }}</div>
         </div>
     {% endfor %}
-        <ul class="pagination">
-        {% for p in paginator.page_range %}
-            <li><a href="{{ paginator.baseurl }}{{ p.number }}">
-            {{ p.number }}</a></li>
-        {% endfor %}
-        </ul>
-    </div>
+        <div class="pagination">
+            <span class="step-links">
+                {% if questions.has_previous %}
+                    <a href="?page={{ questions.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ questions.number }} of {{ questions.paginator.num_pages }}.
+                </span>
+
+                {% if contacts.has_next %}
+                    <a href="?page={{ questions.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
 {% endblock %}

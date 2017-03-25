@@ -16,9 +16,8 @@ def main_questions(request, *args, **kwargs):
     page = request.GET.get('page',1)
     paginator = Paginator(questions,limit)
     paginator.baseurl = "/?page="
-    page = paginator.page(page)
+    questions = paginator.page(page)
     return render(request, 'qa/main.html', {
-        'questions': page.object_list,
-        'paginator': paginator,
-        'page': page
+        'questions': questions
+
     })
