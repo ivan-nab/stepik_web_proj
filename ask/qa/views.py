@@ -5,7 +5,7 @@ from django.http import Http404
 from django.shortcuts import render, get_object_or_404 
 from django.core.paginator import Paginator, EmptyPage
 from django.core.urlresolvers import reverse
-from models import Question
+from models import Question, Answer
 
 def test(request, *args, **kwargs):
     return HttpResponse('OK',status=200)
@@ -45,6 +45,8 @@ def popular_questions(request, *args, **kwargs):
 def question_answers(request,*args,**kwargs):
     question_id = args[0] 
     question = get_object_or_404(Question,pk=question_id)
+    answers = Answer.objects.filter(question=question).all()
     return render(request, 'qa/question.html',{
-        'question': question
+        'question': question,
+        'answers': answers
     })
