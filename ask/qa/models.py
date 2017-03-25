@@ -22,7 +22,7 @@ class Question(models.Model):
 
     def get_url(self):
         base_url = reverse("main_questions")
-        return '/'.join((base_url,str(self.id))
+        return '/'.join(base_url,str(self.id))
         
 
 class Answer(models.Model):
