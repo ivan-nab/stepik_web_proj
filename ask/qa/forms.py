@@ -13,7 +13,7 @@ class AskForm(forms.Form):
     text = forms.CharField(widget=forms.Textarea)
 
     def __init__(self,*args, **kwargs):
-        self._user = user
+        self._user = args[0]
         super(AskForm,self).__init__(**kwargs)
 
     def save(self):
