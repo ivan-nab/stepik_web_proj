@@ -6,7 +6,7 @@ from django.core.paginator import Paginator, EmptyPage
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from models import Question, Answer
-from forms import AskForm
+from forms import AskForm, AnswerForm
 
 def test(request, *args, **kwargs):
     return HttpResponse('OK',status=200)
