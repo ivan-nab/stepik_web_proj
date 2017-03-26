@@ -16,10 +16,16 @@
             {% csrf_token %}
             <fieldset>
                 {% for field in form %}
-                <div class="control-group
-                    {% if field.errors %}has-error{% endif %}">
-                    <label class="control-label">{{ field.label }}</label>
-                    <div class="controls">{{ field }}</div>
+                <div class="row">
+                    <div class="control-group
+                        {% if field.errors %}has-error{% endif %}">
+                        <div class="col-sm-6">
+                            <label class="control-label">{{ field.label }}</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="controls">{{ field }}</div>
+                        </div>
+                    </div>
                 </div>
                 {% endfor %}
             </fieldset>
