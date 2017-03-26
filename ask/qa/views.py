@@ -60,6 +60,6 @@ def question_add(request, *args, **kwargs):
             return HttpResponseRedirect(url)
     else:
         form = AskForm()
-    return render(request, 'qa/ask.html'{
+    return render(request, 'qa/ask.html',{
         'form': form
     })
