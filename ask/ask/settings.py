@@ -82,6 +82,7 @@ DATABASES = {
         'NAME': 'askdb',
         'USER': 'qa',
         'PASSWORD': 'qapass',
+        'OPTIONS': {'charset': 'utf8mb4'},
     }
 }
 
