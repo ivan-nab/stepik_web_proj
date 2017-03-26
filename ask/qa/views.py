@@ -52,6 +52,8 @@ def question_answers(request,*args,**kwargs):
             answer = form.save()
             url = question.get_url()
             return HttpResponseRedirect(url)
+        else:
+            return HttpResponse('OK')
     else:
         form = AnswerForm(initial={'question': question_id})
         answers = Answer.objects.filter(question=question).all()
