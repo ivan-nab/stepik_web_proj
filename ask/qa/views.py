@@ -55,13 +55,13 @@ def question_answers(request,*args,**kwargs):
 def question_add(request, *args, **kwargs):
     user = User.objects.first()
     if request.method =="POST":
-        form = AskForm(user,request.POST)
+        form = AskForm(request.POST)
         if form.is_valid():
             question = form.save()
             url = question.get_url()
             return HttpResponseRedirect(url)
     else:
-        form = AskForm(user)
+        form = AskForm()
     return render(request, 'qa/ask.html',{
         'form': form
     })
