@@ -12,7 +12,12 @@ class AskForm(forms.Form):
     title = forms.CharField(max_length=255)
     text = forms.CharField(widget=forms.Textarea)
 
+    def __init__(self, user, **kwargs):
+        self._user = user
+        super(AskForm,self).__init__(**kwargs)
+
     def save(self):
         question = Question(**self.cleaned_data)
+        question.author = self._user
         question.save()
         return question

@@ -4,6 +4,7 @@ from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404 
 from django.core.paginator import Paginator, EmptyPage
 from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User
 from models import Question, Answer
 from forms import AskForm
 
@@ -52,14 +53,15 @@ def question_answers(request,*args,**kwargs):
     })
 
 def question_add(request, *args, **kwargs):
+    user = User.objects.first()
     if request.method =="POST":
-        form = AskForm(request.POST)
+        form = AskForm(user,request.POST)
         if form.is_valid():
             question = form.save()
             url = question.get_url()
             return HttpResponseRedirect(url)
     else:
-        form = AskForm()
+        form = AskForm(user)
     return render(request, 'qa/ask.html',{
         'form': form
     })
