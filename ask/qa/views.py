@@ -46,11 +46,20 @@ def popular_questions(request, *args, **kwargs):
 def question_answers(request,*args,**kwargs):
     question_id = args[0] 
     question = get_object_or_404(Question,pk=question_id)
-    answers = Answer.objects.filter(question=question).all()
-    return render(request, 'qa/question.html',{
-        'question': question,
-        'answers': answers
-    })
+    if request.method =="POST":
+        form = AnswerForm(request.POST)
+        if form.is_valid():
+            answer = form.save()
+            url = question.get_url()
+            return HttpResponseRedirect(url)
+    else:
+        form = AnswerForm()
+        answers = Answer.objects.filter(question=question).all()
+        return render(request, 'qa/question.html',{
+            'question': question,
+            'answers': answers,
+            'form': form
+        })
 
 def question_add(request, *args, **kwargs):
     user = User.objects.first()

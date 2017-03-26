@@ -17,3 +17,13 @@ class AskForm(forms.Form):
         question.author_id = 1
         question.save()
         return question
+
+class AnswerForm(forms.Form):
+    text = forms.CharField(widget=forms.Textarea)
+    question = forms.IntegerField(widget=forms.HiddenInput)
+
+    def save(self):
+        answer = Answer(**self.cleaned_data)
+        answer.author_id = 1
+        answer.save()
+        return answer        
