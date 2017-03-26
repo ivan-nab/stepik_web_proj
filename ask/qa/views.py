@@ -71,6 +71,8 @@ def question_add(request, *args, **kwargs):
             question = form.save()
             url = question.get_url()
             return HttpResponseRedirect(url)
+        else:
+            return HttpResponse('OK')
     else:
         form = AskForm()
     return render(request, 'qa/ask.html',{

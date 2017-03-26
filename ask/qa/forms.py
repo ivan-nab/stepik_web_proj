@@ -14,13 +14,6 @@ class AskForm(forms.Form):
     title = forms.CharField(max_length=255)
     text = forms.CharField(widget=forms.Textarea)
 
-    def clean_author(self):
-    question_id = self.cleaned_data['author']
-    question = Question.objects.filter(pk=question_id).first()
-    if not question:
-        raise form.ValidationError(u'Вопроса не существует',code=14)
-    return question
-
     def save(self):
         question = Question(**self.cleaned_data)
         question.author_id = 1
@@ -37,6 +30,7 @@ class AnswerForm(forms.Form):
         if not question:
             raise form.ValidationError(u'Вопроса не существует',code=14)
         return question
+
     def save(self):     
         answer = Answer(**self.cleaned_data)
         answer.author_id = 1
