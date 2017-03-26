@@ -54,7 +54,7 @@ def question_answers(request,*args,**kwargs):
 def question_add(request, *args, **kwargs):
     if request.method =="POST":
         form = AskForm(request.POST)
-        if form.isvalid():
+        if form.is_valid():
             question = form.save()
             url = question.get_url()
             return HttpResponseRedirect(url)
