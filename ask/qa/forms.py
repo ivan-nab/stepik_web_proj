@@ -12,7 +12,7 @@ class AskForm(forms.Form):
     title = forms.CharField(max_length=255)
     text = forms.CharField(widget=forms.Textarea)
 
-    def __init__(self, user, **kwargs):
+    def __init__(self, **kwargs):
         self._user = user
         super(AskForm,self).__init__(**kwargs)
 
