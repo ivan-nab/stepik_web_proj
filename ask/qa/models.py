@@ -1,5 +1,4 @@
 from __future__ import unicode_literals
-
 from django.db import models
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
@@ -16,7 +15,7 @@ class Question(models.Model):
     text = models.TextField()
     added_at = models.DateTimeField(auto_now_add=True)
     rating = models.IntegerField(default=0)
-    author = models.ForeignKey(User)
+    author = models.ForeignKey(User,default=1)
     likes = models.ManyToManyField(User,related_name='question_like_user')
     objects = QuestionManager()
 
