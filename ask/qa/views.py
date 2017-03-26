@@ -53,7 +53,7 @@ def question_answers(request,*args,**kwargs):
             url = question.get_url()
             return HttpResponseRedirect(url)
     else:
-        form = AnswerForm()
+        form = AnswerForm(initial={'question': question_id})
         answers = Answer.objects.filter(question=question).all()
         return render(request, 'qa/question.html',{
             'question': question,
